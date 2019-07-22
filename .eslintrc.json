@@ -1,0 +1,123 @@
+{
+  "extends": [
+    "airbnb",
+    "plugin:sonarjs/recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:prettier/recommended",
+    "prettier/@typescript-eslint",
+    "prettier/react"
+  ],
+  "plugins": ["sonarjs", "simple-import-sort"],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": 2017,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "settings": {
+    "import/parsers": {
+      "@typescript-eslint/parser": [".ts", ".tsx"]
+    },
+    "import/resolver": {
+      "typescript": {}
+    }
+  },
+  "rules": {
+    "no-shadow": "off",
+    "no-undef": "off",
+    "no-console": "off",
+    "no-continue": "off",
+    "no-plusplus": "off",
+    "no-param-reassign": ["error", { "props": false }],
+    "no-useless-constructor": "off",
+    "no-dupe-class-members": "off",
+    "no-restricted-syntax": [
+      "error",
+      "ForInStatement",
+      "LabeledStatement",
+      "WithStatement"
+    ],
+    "sort-imports": "off",
+    "lines-between-class-members": [
+      "warn",
+      "always",
+      { "exceptAfterSingleLine": true }
+    ],
+    "import/export": "off",
+    "import/no-cycle": "off",
+    "import/no-unresolved": "off",
+    "import/prefer-default-export": "off",
+    "import/order": "off",
+    "simple-import-sort/sort": "error",
+    "react/prop-types": "off",
+    "react/no-array-index-key": "off",
+    "react/no-unescaped-entities": "off",
+    "react/destructuring-assignment": [
+      "warn",
+      "always",
+      { "ignoreClassFields": true }
+    ],
+    "react/jsx-one-expression-per-line": "off",
+    "react/jsx-filename-extension": ["warn", { "extensions": [".tsx"] }],
+    "react/jsx-no-duplicate-props": ["warn", { "ignoreCase": false }],
+    "react/sort-comp": [
+      "warn",
+      {
+        "order": [
+          "instance-variables",
+          "static-methods",
+          "lifecycle",
+          "render",
+          "everything-else"
+        ],
+        "groups": {
+          "lifecycle": [
+            "displayName",
+            "propTypes",
+            "contextTypes",
+            "childContextTypes",
+            "mixins",
+            "statics",
+            "defaultProps",
+            "constructor",
+            "getDefaultProps",
+            "state",
+            "getInitialState",
+            "getChildContext",
+            "getDerivedStateFromProps",
+            "componentWillMount",
+            "UNSAFE_componentWillMount",
+            "componentDidMount",
+            "componentWillReceiveProps",
+            "UNSAFE_componentWillReceiveProps",
+            "shouldComponentUpdate",
+            "componentWillUpdate",
+            "UNSAFE_componentWillUpdate",
+            "getSnapshotBeforeUpdate",
+            "componentDidUpdate",
+            "componentDidCatch",
+            "componentWillUnmount"
+          ]
+        }
+      }
+    ],
+    "@typescript-eslint/array-type": ["warn", "array-simple"],
+    "@typescript-eslint/explicit-function-return-type": "off",
+    "@typescript-eslint/explicit-member-accessibility": [
+      "warn",
+      { "accessibility": "no-public" }
+    ],
+    "@typescript-eslint/no-empty-interface": [
+      "warn",
+      { "allowSingleExtends": true }
+    ],
+    "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/no-unused-vars": [
+      "error",
+      { "argsIgnorePattern": "^_" }
+    ],
+    "@typescript-eslint/no-use-before-define": ["error", { "functions": false }]
+  }
+}
