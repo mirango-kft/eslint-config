@@ -63,7 +63,7 @@
     "react/jsx-one-expression-per-line": "off",
     "react/jsx-filename-extension": ["warn", { "extensions": [".tsx"] }],
     "react/jsx-no-duplicate-props": ["warn", { "ignoreCase": false }],
-    "react/jsx-no-useless-fragment": "error",
+    "react/jsx-no-useless-fragment": "off",
     "react/sort-comp": [
       "warn",
       {
