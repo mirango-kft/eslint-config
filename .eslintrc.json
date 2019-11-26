@@ -128,6 +128,12 @@
       "error",
       { "argsIgnorePattern": "^_" }
     ],
-    "@typescript-eslint/no-use-before-define": ["error", { "functions": false }]
+    "@typescript-eslint/no-use-before-define": [
+      "error",
+      { "functions": false }
+    ],
+    "@typescript-eslint/prefer-optional-chain": ["error"],
+    "@typescript-eslint/prefer-nullish-coalescing": ["error"],
+    "@typescript-eslint/no-extra-non-null-assertion": ["error"]
   }
 }
