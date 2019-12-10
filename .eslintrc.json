@@ -4,6 +4,7 @@
     "plugin:sonarjs/recommended",
     "plugin:@typescript-eslint/recommended",
     "plugin:prettier/recommended",
+    "plugin:import/typescript",
     "prettier/@typescript-eslint",
     "prettier/react"
   ],
@@ -14,14 +15,6 @@
     "sourceType": "module",
     "ecmaFeatures": {
       "jsx": true
-    }
-  },
-  "settings": {
-    "import/parsers": {
-      "@typescript-eslint/parser": [".ts", ".tsx"]
-    },
-    "import/resolver": {
-      "typescript": {}
     }
   },
   "rules": {
@@ -45,9 +38,14 @@
       "always",
       { "exceptAfterSingleLine": true }
     ],
+    "import/no-unresolved": "off",
+    "import/named": "off",
+    "import/default": "off",
+    "import/namespace": "off",
+    "import/no-restricted-paths": "off",
+    "import/no-internal-modules": "off",
     "import/export": "off",
     "import/no-cycle": "off",
-    "import/no-unresolved": "off",
     "import/prefer-default-export": "off",
     "import/order": "off",
     "simple-import-sort/sort": ["error"],
