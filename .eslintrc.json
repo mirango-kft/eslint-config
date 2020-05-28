@@ -117,6 +117,7 @@
       "warn",
       { "assertionStyle": "as", "objectLiteralTypeAssertions": "never" }
     ],
+    "@typescript-eslint/explicit-module-boundary-types": ["off"],
     "no-unused-expressions": "off",
     "@typescript-eslint/no-unused-expressions": "error",
     "@typescript-eslint/array-type": ["warn", { "default": "array-simple" }],
