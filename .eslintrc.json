@@ -3,6 +3,7 @@
     "airbnb",
     "plugin:sonarjs/recommended",
     "plugin:@typescript-eslint/recommended",
+    "plugin:@typescript-eslint/recommended-requiring-type-checking",
     "plugin:prettier/recommended",
     "plugin:import/typescript",
     "prettier/@typescript-eslint",
@@ -139,6 +140,7 @@
     ],
     "@typescript-eslint/prefer-optional-chain": ["error"],
     "@typescript-eslint/prefer-nullish-coalescing": ["error"],
-    "@typescript-eslint/no-extra-non-null-assertion": ["error"]
+    "@typescript-eslint/no-extra-non-null-assertion": ["error"],
+    "@typescript-eslint/unbound-method": ["off"]
   }
 }
