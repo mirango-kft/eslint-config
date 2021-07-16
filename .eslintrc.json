@@ -22,6 +22,7 @@
     "no-console": "off",
     "no-continue": "off",
     "no-plusplus": "off",
+    "no-void": "off",
     "no-param-reassign": ["error", { "props": false }],
     "no-useless-constructor": "off",
     "no-dupe-class-members": "off",
