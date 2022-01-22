@@ -51,6 +51,7 @@
     "import/no-duplicates": "off",
     "import/no-extraneous-dependencies": "off",
     "import/no-self-import": "off",
+    "import/no-import-module-exports": "off",
     "simple-import-sort/imports": ["error"],
     "react/prop-types": "off",
     "react/jsx-props-no-spreading": "off",
