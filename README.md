@@ -10,16 +10,10 @@ yarn add --dev @mirango/eslint-config
 
 ## Usage
 
-Install [`typescript-eslint`](https://typescript-eslint.io/getting-started):
+Install all required packages:
 
 ```
-yarn add --dev @typescript-eslint/parser @typescript-eslint/eslint-plugin eslint typescript
-```
-
-Install `prettier`:
-
-```
-yarn add --dev prettier
+yarn add --dev eslint typescript prettier
 ```
 
 Modify your `.eslintrc.json` file:
