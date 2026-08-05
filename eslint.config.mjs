@@ -17,7 +17,9 @@ export default [
   sonarjs.configs.recommended,
   ...tseslint.configs.recommended,
   ...tseslint.configs.recommendedTypeChecked,
-  importFlatConfigs.typescript,
+  // airbnb (via fixupConfigRules) already registers the `import` plugin, so take
+  // only the TS resolver settings — spreading the whole config redefines the plugin.
+  { settings: importFlatConfigs.typescript.settings },
   prettierRecommended,
   {
     plugins: {
