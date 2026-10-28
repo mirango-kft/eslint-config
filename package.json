@@ -1,38 +1,40 @@
 {
   "name": "@mirango/eslint-config",
-  "version": "0.102.0",
+  "version": "1.0.0",
   "main": "eslint.config.mjs",
+  "files": [
+    "eslint.config.mjs"
+  ],
   "author": "zsparal <paral.zsolt@mirango.hu>",
   "license": "MIT",
+  "scripts": {
+    "test": "eslint --max-warnings 0 test",
+    "prepublishOnly": "yarn test"
+  },
   "dependencies": {
-    "@typescript-eslint/eslint-plugin": "^8.66.0",
-    "@typescript-eslint/parser": "^8.66.0",
-    "eslint-config-airbnb": "^19.0.4",
-    "eslint-config-prettier": "^10.1.8",
-    "eslint-plugin-import": "^2.32.0",
-    "eslint-plugin-jsx-a11y": "^6.10.2",
-    "eslint-plugin-prettier": "^5.5.6",
-    "eslint-plugin-react": "^7.37.5",
-    "eslint-plugin-react-hooks": "^7.1.1",
-    "eslint-plugin-simple-import-sort": "^14.0.0",
-    "eslint-plugin-sonarjs": "^4.2.0"
+    "@eslint/compat": "2.1.1",
+    "@eslint/js": "10.0.1",
+    "confusing-browser-globals": "1.0.11",
+    "eslint-config-prettier": "10.1.8",
+    "eslint-plugin-import-x": "4.17.1",
+    "eslint-plugin-jsx-a11y": "6.10.2",
+    "eslint-plugin-prettier": "5.5.7",
+    "eslint-plugin-react": "7.37.5",
+    "eslint-plugin-react-hooks": "7.1.1",
+    "eslint-plugin-simple-import-sort": "14.0.0",
+    "eslint-plugin-sonarjs": "4.2.2",
+    "typescript-eslint": "8.72.0"
   },
   "peerDependencies": {
-    "@eslint/compat": "^2.1.0",
-    "@eslint/eslintrc": "^3.3.6",
-    "@types/eslint": "^9.6.1",
-    "eslint": "^9.39.5",
+    "eslint": "^10.0.0",
     "prettier": "^3.9.6",
-    "typescript": "^5.8.3 || ^6.0.0",
-    "typescript-eslint": "^8.66.0"
+    "typescript": "^5.8.3 || ^6.0.0"
   },
   "devDependencies": {
-    "@eslint/compat": "^2.1.0",
-    "@eslint/eslintrc": "^3.3.6",
-    "@types/eslint": "^9.6.1",
-    "eslint": "^9.39.5",
-    "prettier": "^3.9.6",
-    "typescript": "^6.0.3",
-    "typescript-eslint": "^8.66.0"
+    "@types/react": "19.3.0",
+    "eslint": "10.13.0",
+    "prettier": "3.9.10",
+    "react": "19.3.1",
+    "typescript": "6.0.3"
   }
 }
