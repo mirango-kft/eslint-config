@@ -23,7 +23,7 @@
     "eslint-plugin-react-hooks": "7.1.1",
     "eslint-plugin-simple-import-sort": "14.0.0",
     "eslint-plugin-sonarjs": "4.2.2",
-    "typescript-eslint": "8.72.1"
+    "typescript-eslint": "8.72.0"
   },
   "peerDependencies": {
     "eslint": "^10.0.0",
