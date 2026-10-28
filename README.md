@@ -2,30 +2,41 @@
 
 An ESLint configuration file that enforces company-wide frontend TypeScript and React best practices.
 
+Requires ESLint 9, TypeScript 5.8+ and Prettier 3.
+
 ## Install
 
 ```
-yarn add --dev @mirango/eslint-config
+yarn add --dev @mirango/eslint-config eslint typescript prettier
 ```
 
 ## Usage
 
-Install all required packages:
+Create an `eslint.config.mjs` file in your project root:
 
-```
-yarn add --dev eslint typescript prettier
-```
+```js
+import mirango from "@mirango/eslint-config";
 
-Modify your `.eslintrc.json` file:
-
-```json
-{
-  "parserOptions": {
-    "project": "tsconfig.json"
+export default [
+  ...mirango,
+  {
+    rules: {
+      "modified-rule": "off",
+    },
   },
-  "extends": ["@mirango/eslint-config"],
-  "rules": {
-    "modified-rule": "off"
-  }
+];
+```
+
+Type-aware linting uses the nearest `tsconfig.json` of each file. If you run ESLint from a directory other than the project root (e.g. in a monorepo), set the root explicitly:
+
+```js
+{
+  languageOptions: {
+    parserOptions: { tsconfigRootDir: import.meta.dirname },
+  },
 }
 ```
+
+## Development
+
+`yarn test` lints the fixtures in `test/` with this config. It runs automatically before `yarn publish`, so a broken config can't be released.

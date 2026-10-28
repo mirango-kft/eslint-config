@@ -15,7 +15,6 @@ export default [
   },
   ...fixupConfigRules(compat.extends("airbnb")),
   sonarjs.configs.recommended,
-  ...tseslint.configs.recommended,
   ...tseslint.configs.recommendedTypeChecked,
   // airbnb (via fixupConfigRules) already registers the `import` plugin, so take
   // only the TS resolver settings — spreading the whole config redefines the plugin.
@@ -31,7 +30,6 @@ export default [
       parserOptions: {
         ecmaVersion: 2022,
         projectService: true,
-        tsconfigRootDir: import.meta.dirname,
         sourceType: "module",
         ecmaFeatures: {
           jsx: true,
@@ -74,8 +72,10 @@ export default [
       "import/no-extraneous-dependencies": "off",
       "import/no-self-import": "off",
       "import/no-import-module-exports": "off",
+      "import/extensions": "off",
       "simple-import-sort/imports": ["error"],
       "react/prop-types": "off",
+      "react/react-in-jsx-scope": "off",
       "react/jsx-props-no-spreading": "off",
       "react/no-unescaped-entities": "off",
       "react/destructuring-assignment": [
@@ -149,7 +149,6 @@ export default [
         "warn",
         { accessibility: "no-public" },
       ],
-      "@typescript-eslint/no-empty-interface": ["warn"],
       "@typescript-eslint/no-explicit-any": "off",
       "@typescript-eslint/no-unused-vars": [
         "error",
