@@ -1,29 +1,34 @@
-import { fixupConfigRules } from "@eslint/compat";
-import { FlatCompat } from "@eslint/eslintrc";
-import { flatConfigs as importFlatConfigs} from "eslint-plugin-import";
+import js from "@eslint/js";
+import confusingBrowserGlobals from "confusing-browser-globals";
+import importX from "eslint-plugin-import-x";
+import jsxA11y from "eslint-plugin-jsx-a11y";
 import prettierRecommended from "eslint-plugin-prettier/recommended";
+import react from "eslint-plugin-react";
 import reactHooks from "eslint-plugin-react-hooks";
 import simpleImportSort from "eslint-plugin-simple-import-sort";
 import sonarjs from "eslint-plugin-sonarjs";
 import tseslint from "typescript-eslint";
 
-const compat = new FlatCompat();
-
 export default [
   {
     ignores: ["eslint.config.mjs"],
   },
-  ...fixupConfigRules(compat.extends("airbnb")),
+  js.configs.recommended,
+  react.configs.flat.recommended,
+  react.configs.flat["jsx-runtime"],
+  jsxA11y.flatConfigs.recommended,
   sonarjs.configs.recommended,
   ...tseslint.configs.recommendedTypeChecked,
-  // airbnb (via fixupConfigRules) already registers the `import` plugin, so take
-  // only the TS resolver settings — spreading the whole config redefines the plugin.
-  { settings: importFlatConfigs.typescript.settings },
   prettierRecommended,
   {
     plugins: {
+      // Registered as `import` so existing `import/*` rule overrides keep working.
+      import: importX,
       "simple-import-sort": simpleImportSort,
       "react-hooks": reactHooks,
+    },
+    settings: {
+      react: { version: "detect" },
     },
     languageOptions: {
       parser: tseslint.parser,
@@ -37,6 +42,189 @@ export default [
       },
     },
     rules: {
+      // Kept from eslint-config-airbnb: bug-catching and autofixable consistency rules.
+      "array-callback-return": ["error", { allowImplicit: true }],
+      "no-cond-assign": ["error", "always"],
+      "no-constant-condition": "warn",
+      "no-unsafe-optional-chaining": [
+        "error",
+        { disallowArithmeticOperators: true },
+      ],
+      "valid-typeof": ["error", { requireStringLiterals: true }],
+      "prefer-const": [
+        "error",
+        { destructuring: "any", ignoreReadBeforeAssign: true },
+      ],
+      "jsx-a11y/anchor-is-valid": [
+        "error",
+        { components: ["Link"], specialLink: ["to"] },
+      ],
+      "jsx-a11y/no-autofocus": ["error", { ignoreNonDOM: true }],
+      "default-case-last": "error",
+      "default-param-last": "error",
+      eqeqeq: ["error", "always", { null: "ignore" }],
+      "grouped-accessor-pairs": "error",
+      "no-alert": "warn",
+      "no-caller": "error",
+      "no-constructor-return": "error",
+      "no-else-return": ["error", { allowElseIf: false }],
+      "no-extend-native": "error",
+      "no-extra-bind": "error",
+      "no-iterator": "error",
+      "no-lone-blocks": "error",
+      "no-loop-func": "error",
+      "no-multi-assign": "error",
+      "no-multi-str": "error",
+      "no-new-wrappers": "error",
+      "no-octal-escape": "error",
+      "no-promise-executor-return": "error",
+      "no-proto": "error",
+      "no-restricted-globals": [
+        "error",
+        {
+          name: "isFinite",
+          message:
+            "Use Number.isFinite instead https://github.com/airbnb/javascript#standard-library--isfinite",
+        },
+        {
+          name: "isNaN",
+          message:
+            "Use Number.isNaN instead https://github.com/airbnb/javascript#standard-library--isnan",
+        },
+        ...confusingBrowserGlobals,
+      ],
+      "no-restricted-properties": [
+        "error",
+        {
+          object: "arguments",
+          property: "callee",
+          message: "arguments.callee is deprecated",
+        },
+        {
+          object: "global",
+          property: "isFinite",
+          message: "Please use Number.isFinite instead",
+        },
+        {
+          object: "self",
+          property: "isFinite",
+          message: "Please use Number.isFinite instead",
+        },
+        {
+          object: "window",
+          property: "isFinite",
+          message: "Please use Number.isFinite instead",
+        },
+        {
+          object: "global",
+          property: "isNaN",
+          message: "Please use Number.isNaN instead",
+        },
+        {
+          object: "self",
+          property: "isNaN",
+          message: "Please use Number.isNaN instead",
+        },
+        {
+          object: "window",
+          property: "isNaN",
+          message: "Please use Number.isNaN instead",
+        },
+        {
+          property: "__defineGetter__",
+          message: "Please use Object.defineProperty instead.",
+        },
+        {
+          property: "__defineSetter__",
+          message: "Please use Object.defineProperty instead.",
+        },
+        {
+          object: "Math",
+          property: "pow",
+          message: "Use the exponentiation operator (**) instead.",
+        },
+      ],
+      "no-return-assign": ["error", "always"],
+      "no-script-url": "error",
+      "no-self-compare": "error",
+      "no-sequences": "error",
+      "no-template-curly-in-string": "error",
+      "no-undef-init": "error",
+      "no-unneeded-ternary": ["error", { defaultAssignment: false }],
+      "no-unreachable-loop": "error",
+      "no-useless-computed-key": "error",
+      "no-useless-concat": "error",
+      "no-useless-rename": "error",
+      "no-lonely-if": "error",
+      "object-shorthand": [
+        "error",
+        "always",
+        { ignoreConstructors: false, avoidQuotes: true },
+      ],
+      "operator-assignment": "error",
+      "prefer-exponentiation-operator": "error",
+      "prefer-numeric-literals": "error",
+      "prefer-object-spread": "error",
+      "prefer-template": "error",
+      "symbol-description": "error",
+      yoda: "error",
+      "jsx-a11y/control-has-associated-label": [
+        "error",
+        {
+          labelAttributes: ["label"],
+          controlComponents: [],
+          ignoreElements: [
+            "audio",
+            "canvas",
+            "embed",
+            "input",
+            "textarea",
+            "tr",
+            "video",
+          ],
+          ignoreRoles: [
+            "grid",
+            "listbox",
+            "menu",
+            "menubar",
+            "radiogroup",
+            "row",
+            "tablist",
+            "toolbar",
+            "tree",
+            "treegrid",
+          ],
+          depth: 5,
+        },
+      ],
+      "jsx-a11y/lang": "error",
+      "react/button-has-type": [
+        "error",
+        { button: true, submit: true, reset: false },
+      ],
+      "react/jsx-boolean-value": ["error", "never"],
+      "react/jsx-curly-brace-presence": [
+        "error",
+        { props: "never", children: "never" },
+      ],
+      "react/jsx-fragments": ["error", "syntax"],
+      "react/jsx-no-constructed-context-values": "error",
+      "react/jsx-no-script-url": ["error", [{ name: "Link", props: ["to"] }]],
+      "react/jsx-pascal-case": ["error", { allowAllCaps: true }],
+      "react/no-access-state-in-setstate": "error",
+      "react/no-array-index-key": "error",
+      "react/no-danger": "warn",
+      "react/no-did-update-set-state": "error",
+      "react/no-invalid-html-attribute": "error",
+      "react/no-namespace": "error",
+      "react/no-this-in-sfc": "error",
+      "react/no-unstable-nested-components": "error",
+      "react/no-unused-state": "error",
+      "react/no-will-update-set-state": "error",
+      "react/self-closing-comp": "error",
+      "react/style-prop-object": "error",
+      "react/void-dom-elements-no-children": "error",
+
       "no-shadow": "off",
       "no-undef": "off",
       "no-console": "off",
@@ -58,21 +246,14 @@ export default [
         "always",
         { exceptAfterSingleLine: true },
       ],
-      "import/no-unresolved": "off",
-      "import/named": "off",
-      "import/default": "off",
-      "import/namespace": "off",
-      "import/no-restricted-paths": "off",
-      "import/no-internal-modules": "off",
-      "import/export": "off",
-      "import/no-cycle": "off",
-      "import/prefer-default-export": "off",
-      "import/order": "off",
-      "import/no-duplicates": "off",
-      "import/no-extraneous-dependencies": "off",
-      "import/no-self-import": "off",
-      "import/no-import-module-exports": "off",
-      "import/extensions": "off",
+      "import/first": "error",
+      "import/newline-after-import": "error",
+      "import/no-absolute-path": "error",
+      "import/no-amd": "error",
+      "import/no-dynamic-require": "error",
+      "import/no-mutable-exports": "error",
+      "import/no-named-default": "error",
+      "import/no-webpack-loader-syntax": "error",
       "simple-import-sort/imports": ["error"],
       "react/prop-types": "off",
       "react/react-in-jsx-scope": "off",
@@ -129,7 +310,10 @@ export default [
         },
       ],
       "react/display-name": "warn",
-      "react/prefer-stateless-function": "error",
+      "react/prefer-stateless-function": [
+        "error",
+        { ignorePureComponents: true },
+      ],
       "react/no-unknown-property": "off",
       "react-hooks/rules-of-hooks": "error",
       "react-hooks/exhaustive-deps": [
