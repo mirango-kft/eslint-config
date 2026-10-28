@@ -1,3 +1,4 @@
+import { fixupPluginRules } from "@eslint/compat";
 import js from "@eslint/js";
 import confusingBrowserGlobals from "confusing-browser-globals";
 import importX from "eslint-plugin-import-x";
@@ -9,13 +10,17 @@ import simpleImportSort from "eslint-plugin-simple-import-sort";
 import sonarjs from "eslint-plugin-sonarjs";
 import tseslint from "typescript-eslint";
 
+// ponytail: eslint-plugin-react 7.x still calls context APIs removed in ESLint 10;
+// drop the shim once it ships ESLint 10 support.
+const reactPlugin = fixupPluginRules(react);
+
 export default [
   {
     ignores: ["eslint.config.mjs"],
   },
   js.configs.recommended,
-  react.configs.flat.recommended,
-  react.configs.flat["jsx-runtime"],
+  { ...react.configs.flat.recommended, plugins: { react: reactPlugin } },
+  { ...react.configs.flat["jsx-runtime"], plugins: { react: reactPlugin } },
   jsxA11y.flatConfigs.recommended,
   sonarjs.configs.recommended,
   ...tseslint.configs.recommendedTypeChecked,

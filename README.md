@@ -2,7 +2,7 @@
 
 An ESLint configuration file that enforces company-wide frontend TypeScript and React best practices.
 
-Requires ESLint 9, TypeScript 5.8+ and Prettier 3.
+Requires ESLint 10, TypeScript 5.8+ and Prettier 3.
 
 ## Install
 
