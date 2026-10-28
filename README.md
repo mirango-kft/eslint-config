@@ -39,7 +39,7 @@ Type-aware linting uses the nearest `tsconfig.json` of each file. If you run ESL
 
 ## Migrating from 0.x
 
-1.0.0 drops `eslint-config-airbnb` and requires ESLint 10 (Node `^20.19.0 || ^22.13.0 || >=24`).
+Version 1 drops `eslint-config-airbnb` and requires ESLint 10 (Node `^20.19.0 || ^22.13.0 || >=24`).
 
 - Upgrade `eslint` to 10. Remove `@eslint/compat`, `@eslint/eslintrc` and `@types/eslint` from your project if you only installed them for this config.
 - Remove local overrides of `import/extensions` and `react/react-in-jsx-scope`; both are off now.
